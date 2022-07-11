@@ -1,21 +1,69 @@
 import './style.css';
+import { createMenu } from './menu';
+import { createContact } from './contact';
+function createNav() {
+  const nav = document.createElement('nav');
+  // const coverHome = document.createElement('div');
+  // const coverMenu = document.createElement('div');
+  // const coverContact = document.createElement('div');
+  const list = document.createElement('ui');
+  const home = document.createElement('li');
+  const menu = document.createElement('li');
+  const contact = document.createElement('li');
+
+  // coverHome.setAttribute('id', 'coverHome');
+  // coverMenu.setAttribute('id', 'coverMenu');
+  // coverContact.setAttribute('id', 'coverContact');
+  home.setAttribute('id', 'home');
+  menu.setAttribute('id', 'menu');
+  contact.setAttribute('id', 'contact');
+
+  // coverHome.classList.add('cover');
+  // coverMenu.classList.add('cover');
+  // coverMenu.classList.add('hidden');
+  // coverContact.classList.add('cover');
+  // coverContact.classList.add('hidden');
+  list.classList.add('tabList');
+
+  // coverHome.textContent = 'Home';
+  // coverMenu.textContent = 'Menu';
+  // coverContact.textContent = 'Contact';
+  home.textContent = 'Home';
+  menu.textContent = 'Menu';
+  contact.textContent = 'Contact';
+
+  home.addEventListener('click', createHome);
+  menu.addEventListener('click', createMenu);
+  contact.addEventListener( 'click', createContact);
+  // nav.appendChild(coverHome);
+  // nav.appendChild(coverMenu);
+  // nav.appendChild(coverContact);
+  nav.appendChild(list);
+  list.appendChild(home);
+  list.appendChild(menu);
+  list.appendChild(contact);
+  
+
+  return nav;
+}
+
 function createHome() {
+  const content = document.querySelector('#content');
   const home = document.createElement('div');
-  const btn = document.createElement('button');
   const header = document.createElement('div');
-  const hours = document.createElement('div');
-  const location = document.createElement('div');
 
-  btn.textContent = 'Home';
+  while (content.firstChild) {
+    content.removeChild(content.firstChild);
+  }  
   header.textContent = 'Organic Grain Bar';
+  header.classList.add('header');
 
-  home.appendChild(btn);
   home.appendChild(header);
   home.appendChild(createDescription());
   home.appendChild(createHours());
   home.appendChild(createLocation());
 
-  return home;
+  content.appendChild(home);
 }
 
 function createDescription() {
@@ -34,7 +82,7 @@ function createDescription() {
   description.appendChild(title);
   description.appendChild(content);
 
-  return description
+  return description;
 }
 
 function createHours() {
@@ -59,7 +107,7 @@ function createHours() {
   hours.appendChild(title);
   hours.appendChild(content);
 
-  return hours
+  return hours;
 }
 
 function createLocation() {
@@ -78,6 +126,7 @@ function createLocation() {
   location.appendChild(title);
   location.appendChild(content);
 
-  return location
+  return location;
 }
-document.body.appendChild(createHome());
+document.body.appendChild(createNav());
+
