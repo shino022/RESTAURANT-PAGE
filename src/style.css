@@ -1,3 +1,13 @@
-#content {
-  background-color: red;
+:root {
+  --1: #f4f2f0;
+  --2: #D7D2CE;
+  --3: #D3C0B2;
+  --4: #A99282;
+  --5: #857B74; 
+  white-space: pre-line;
 }
+
+body {
+  background-color: var(--5);
+}
+
